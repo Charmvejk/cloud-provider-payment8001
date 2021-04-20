@@ -1,0 +1,36 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: cloud-payment-service #服务名
+  #  zipkin:
+  #    base-url: http://localhost:9411
+  #  sleuth:
+  #    sampler:
+  #      probability: 1   #采样率值介于0-1之间，1则表示全部采集
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  #当前数据源操作类型
+    driver-class-name: com.mysql.cj.jdbc.Driver #数据库驱动包
+    url: jdbc:mysql://localhost:3306/cloud2020?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+    username: root
+    password: 123456
+#  devtools:
+#    restart:
+#      enabled: true #是否支持热部署
+#eureka:
+#  client:
+#    #表示是否将自己注册进eurekaServer 默认为true
+#    register-with-eureka: true
+#    #是否从eurekaServer抓取已有的注册信息，默认为true，单节点无所谓，集群必须设置为true才能配合ribbon使用负载均衡
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/erueka
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://localhost:8001/eureka
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.atguigu.springcloud.entities  #所有entity别名所在包

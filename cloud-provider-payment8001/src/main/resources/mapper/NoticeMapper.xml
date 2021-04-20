@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atguigu.springcloud.dao.NoticeDao">
+
+    <resultMap id="BaseResultMap" type="com.atguigu.springcloud.entities.Notice">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <id column="title" property="title" jdbcType="VARCHAR"/>
+        <id column="date" property="date" jdbcType="DATE"/>
+        <id column="subtitle" property="subtitle" jdbcType="VARCHAR"/>
+        <id column="content" property="content" jdbcType="VARCHAR"/>
+
+    </resultMap>
+    <!-- 分页-->
+    <select id="getMsg" parameterType="Map" resultMap="BaseResultMap">
+       select * from notice limit #{currentPage} , #{pageSize}
+    </select>
+    <select id="getTotalMsg" resultMap="BaseResultMap">
+       select * from notice
+    </select>
+
+</mapper>
+
